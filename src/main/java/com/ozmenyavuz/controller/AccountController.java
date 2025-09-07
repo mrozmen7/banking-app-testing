@@ -14,6 +14,7 @@ import java.math.BigDecimal;
 import java.util.List;
 import java.util.stream.Collectors;
 
+
 @RestController
 @RequestMapping("/api/accounts")
 public class AccountController {
@@ -30,7 +31,7 @@ public class AccountController {
 
         Account account = new Account
                 (null, requestDto.getAccountNumber(),
-                requestDto.getHolderName(), requestDto.getBalance());
+                requestDto.getHolderName(), requestDto.getBalance(), requestDto.getDailyLimit());
 
         Account saved = accountService.createAccount(account);
 
@@ -76,8 +77,7 @@ public class AccountController {
         return ResponseEntity.noContent().build();
     }
 
-    // --- Mapping Method (Entity → DTO) ---
-    private AccountDto toDto(Account account) {
+    public AccountDto toDto(Account account) {
         AccountDto dto = new AccountDto();
         dto.setAccountNumber(account.getAccountNumber());
         dto.setHolderName(account.getHolderName());

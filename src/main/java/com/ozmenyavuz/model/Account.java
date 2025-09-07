@@ -26,4 +26,7 @@ public class Account {
 
     @Column(nullable = false)
     private BigDecimal balance;
+
+    @Column(name = "daily_limit", precision = 38, scale = 2)
+    private BigDecimal dailyLimit;
 }

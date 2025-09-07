@@ -13,6 +13,8 @@ spring:
         dialect: org.hibernate.dialect.PostgreSQLDialect
         default_schema: banktest
     show-sql: true
-
+banking:
+  limit:
+    default-daily: 10000
 server:
   port: 8081

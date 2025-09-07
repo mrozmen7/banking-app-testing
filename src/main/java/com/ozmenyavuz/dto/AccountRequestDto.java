@@ -23,4 +23,6 @@ public class AccountRequestDto {
     @NotNull
     @Min(value = 0, message = "Balance must be non-negative")
     private BigDecimal balance;
+
+    private BigDecimal dailyLimit;
 }
