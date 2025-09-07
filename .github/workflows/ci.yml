@@ -13,12 +13,12 @@ jobs:
     services:
       postgres:
         image: postgres:15
+        ports:
+          - 5432:5432
         env:
           POSTGRES_USER: postgres
           POSTGRES_PASSWORD: 3014
           POSTGRES_DB: postgres
-        ports:
-          - 5432:5432
         options: >-
           --health-cmd="pg_isready -U postgres"
           --health-interval=10s
@@ -35,13 +35,12 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
 
-      - name: Wait for PostgreSQL to be ready
+      - name: Wait for PostgreSQL
         run: |
-          for i in {1..30}; do
-            pg_isready -h localhost -p 5432 -U postgres && break
+          until pg_isready -h localhost -p 5432 -U postgres; do
             echo "Waiting for postgres..."
-            sleep 2
+            sleep 5
           done
 
-      - name: Build with Maven (run tests)
+      - name: Build with Maven
         run: mvn -B clean install
