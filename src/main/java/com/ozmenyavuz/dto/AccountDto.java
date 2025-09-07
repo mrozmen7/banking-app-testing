@@ -8,5 +8,5 @@ public class AccountDto {
     private Long accountNumber;
     private String holderName;
     private BigDecimal balance;
-    private BigDecimal dailyLimit;
+
 }

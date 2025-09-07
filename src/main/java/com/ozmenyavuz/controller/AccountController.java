@@ -31,7 +31,7 @@ public class AccountController {
 
         Account account = new Account
                 (null, requestDto.getAccountNumber(),
-                requestDto.getHolderName(), requestDto.getBalance(), requestDto.getDailyLimit());
+                requestDto.getHolderName(), requestDto.getBalance());
 
         Account saved = accountService.createAccount(account);
 
